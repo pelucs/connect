@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+html, body{
+  @apply scroll-smooth;
+}
+
+.centralized{
+  @apply flex items-center justify-center;
+}
+
+.gradient{
+  @apply bg-gradient-to-l to-purple-500 from-blue-500;
+}
+
+.text-gradient{
+  @apply text-transparent bg-clip-text gradient;
+}
+
+.button{
+  @apply centralized gap-3 px-4 py-3 rounded font-alt gradient text-lg hover:scale-105 uppercase transition-all;
+}
+
+.input{
+  @apply flex-1 rounded pl-11 pr-4 py-3 outline-none text-sm bg-zinc-800 border border-zinc-700 
+  hover:border-purple-primary focus:border-purple-primary transition-all;
+}
+
+*::-webkit-scrollbar{
+  @apply w-1;
+}
+
+*::-webkit-scrollbar-thumb{
+  @apply w-1 bg-purple-primary;
+}
+
+*::-webkit-scrollbar-track{
+  @apply bg-transparent;
+}
