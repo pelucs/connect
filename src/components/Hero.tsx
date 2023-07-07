@@ -7,7 +7,7 @@ import { Users } from 'lucide-react';
 
 export default () => {
   return(
-    <div className="w-full h-screen py-16 px-5 md:px-16 flex items-center flex-col justify-between bg-[url(../assets/bg.png)]">
+    <div className="w-full min-h-screen py-16 px-5 md:px-16 flex items-center flex-col justify-between bg-[url(../assets/bg.png)]">
       <Image 
         src={logoConnect} 
         alt="Logo do Connect"
@@ -26,9 +26,9 @@ export default () => {
           <TextGradient title="Conference"/>
         </strong>
 
-        <p className="text-zinc-300 w-full max-w-md text-center">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil id magni error harum ea fugiat dolor 
-          rerum officia voluptates.
+        <p className="text-zinc-300 w-full max-w-lg text-center">
+          Nós vamos construir um legado de fé, esperança e amor para as futuras gerações, e não mediremos
+          esforços para cumprir esse propósito.
         </p>
 
         <a href="#form" className="button">

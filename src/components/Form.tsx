@@ -3,6 +3,7 @@
 import { 
   AlertTriangle, 
   Copy, 
+  Loader, 
   MoveRight, 
   Phone, 
   Shirt, 
@@ -13,25 +14,54 @@ from "lucide-react";
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useCreateFormMutation } from "@/graphql/generated";
 
 const schemaForm = z.object({
   name: z.string().nonempty("*Informe o seu nome"),
   contact: z.string().nonempty("*Inform seu contato"),
   departament: z.string().nonempty("*Informe o departamento"),
-  sizeShirt: z.string().nonempty("*Informe o tamanho da sua camisa")
+  sizeShirt: z.string().nonempty("*Informe o tamanho da sua camisa"),
+  description: z.string()
 });
 
 type SchemaFormData = z.infer<typeof schemaForm>;
 
 export default () => {
 
+  const [createForm, { loading }] = useCreateFormMutation();
+
   const { register, handleSubmit, formState: { errors } } = useForm<SchemaFormData>({
     resolver: zodResolver(schemaForm)
   });
 
   //ENVIANDO FORMULÁRIO
-  const sendForm = (data: SchemaFormData) => {
-    console.log(data)
+  const sendForm = async (data: SchemaFormData) => {
+    await createForm({
+      variables: {
+        name: data.name,
+        contact: data.contact,
+        departament: data.departament,
+        sizeShirt: data.sizeShirt,
+        description: data.description
+      }
+    })
+    .then(() => {
+      alert("Formulário enviado com sucesso!")
+      window.location.reload();
+    })
+    .catch(() => alert("Opss! Algo deu errado."))
+  }
+
+  const copyTransfer = () => {
+    let textCopy = document.querySelector("#copy");
+
+    if(textCopy){
+      let formatText = textCopy.innerHTML.replace("(Pedro Lucas)", "");
+
+      navigator.clipboard.writeText(formatText);
+
+      alert("Copiado para área de transferência")
+    }
   }
 
   return(
@@ -103,9 +133,30 @@ export default () => {
               >
                 <option disabled value="default">Escolha o departamento</option>
 
-                <option value="Mídia">Mídia</option>
-                <option value="Welcome">Welcome</option>
-                <option value="Comunicação">Comunicação</option>
+                <option 
+                  value="Welcome"
+                  label="Welcome (Responsável pela organização do culto e recepção)"
+                />
+
+                <option 
+                  value="Creative"
+                  label="Creative (responsável pela captura visual, criação dos layout e controle das redes sociais)"
+                />
+                
+                <option 
+                  value="Produção"
+                  label="Produção (responsável pela criação e montagem do projeto visual)"
+                />
+
+                <option 
+                  value="Theater"
+                  label="Theater (Criação e execução de peças teatrais)"
+                />
+
+                <option 
+                  value="Dance"
+                  label="Dance (Responsável pela criação da dança, seja ela coreografada ou espontânea)"
+                />
               </select>
             </div>
 
@@ -135,6 +186,19 @@ export default () => {
               </span>
             )}
           </div>
+
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <label htmlFor="" className="uppercase text-xs text-zinc-400 font-bold">Alguma observação? (OPCIONAL)</label>
+        
+          <textarea
+            {...register("description")}
+            placeholder="Ex: Pagamento será em 2x"
+            className="w-full h-20 rounded px-4 py-3 outline-none text-sm bg-zinc-800 border 
+            border-zinc-700 hover:border-purple-primary focus:border-purple-primary 
+            transition-all resize-none"
+          />
         </div>
       </div>
 
@@ -146,30 +210,38 @@ export default () => {
 
         <p className="text-zinc-400 w-full max-w-lg text-sm md:text-base">
           É importante que você envie o comprovante de pagamento para o contato 
-          <a href="#" className="text-gradient font-bold text-lg underline"> (83) 90000-0000</a>.
+          <span className="text-gradient font-bold text-lg underline"> (83) 98729-6826</span>.
         </p>
       </div>
 
       <div className="mt-5 flex flex-col gap-2">
         <span className="uppercase text-xs font-bold text-zinc-400">
-          Pix copia e cola
+          Pix para pagamento
         </span>
 
-        <div className="px-5 py-4 bg-zinc-800 border rounded border-zinc-700 flex items-center gap-3">
-          <p className="whitespace-nowrap text-ellipsis overflow-hidden">
-            aksjdlaskldjalksldkklajskldjklajslkdjaksdasdaksdjalksdasdadassdasdasdasdassdasdasdasdasdas
+        <div className="px-5 py-4 bg-zinc-800 border rounded border-zinc-700 flex items-center justify-between gap-3">
+          <p id="copy" className="whitespace-nowrap text-ellipsis overflow-hidden">
+            83987296826 (Pedro Lucas)
           </p>
 
-          <span>
+          <span onClick={copyTransfer}>
             <Copy className="w-6 h-6 text-zinc-400 hover:text-white transition-colors"/>
           </span>
         </div>
       </div>
 
-      <button type="submit" className="w-full mt-5 button">
-        Enviar formulário
+      <button disabled={loading} type="submit" className="w-full mt-5 button">
+        {loading ? (
+          <span>
+            <Loader className="w-6 h-6 animate-spin"/>
+          </span>
+        ) : (
+          <>
+            Enviar formulário
 
-        <MoveRight className="w-6 h-6"/>
+            <MoveRight className="w-6 h-6"/>
+          </>
+        )}
       </button>
     </form>
   );

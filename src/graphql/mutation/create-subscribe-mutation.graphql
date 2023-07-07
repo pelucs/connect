@@ -1,0 +1,6 @@
+mutation CreateForm ($name: String!, $contact: String!, $departament: String!, $sizeShirt: String!, $description: String!) {
+  createForm(
+    data: {name: $name, contact: $contact, departament: $departament, sizeShirt: $sizeShirt, description: $description}){
+    id
+  }
+}
