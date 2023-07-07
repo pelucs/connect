@@ -21,11 +21,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <body className={`${inter.variable} ${baiJamjuree.variable} font-sans text-zinc-100 bg-zinc-800`}>
-        <ApolloProvider client={client}>
+      <ApolloProvider client={client}>
+        <body className={`${inter.variable} ${baiJamjuree.variable} font-sans text-zinc-100 bg-zinc-800`}>
           {children}
-        </ApolloProvider>
-      </body>
+        </body>
+      </ApolloProvider>
     </html>
   )
 }
