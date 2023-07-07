@@ -1,5 +1,10 @@
+'use client'
+
 import Form from "./Form";
 import TextGradient from "./TextGradient";
+
+import { ApolloProvider } from '@apollo/client'
+import { client } from "@/lib/apolllo";
 
 export default () => {
   return(
@@ -18,7 +23,9 @@ export default () => {
         </p>
       </div>
 
-      <Form/>
+      <ApolloProvider client={client}>
+        <Form/>
+      </ApolloProvider>
     </div>
   );
 }

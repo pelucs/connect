@@ -1,10 +1,5 @@
-'use client'
-
 import './globals.css'
 import { Inter, Bai_Jamjuree as BaiJamburee } from 'next/font/google'
-
-import { ApolloProvider } from '@apollo/client' 
-import { client } from '@/lib/apolllo';
 
 const inter = Inter({ subsets: ['latin'], variable: "--font-inter" });
 const baiJamjuree = BaiJamburee({ subsets: ['latin'], weight: "600", variable: "--font-bai-jamjuree" });
@@ -21,11 +16,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <ApolloProvider client={client}>
-        <body className={`${inter.variable} ${baiJamjuree.variable} font-sans text-zinc-100 bg-zinc-800`}>
-          {children}
-        </body>
-      </ApolloProvider>
+      <body className={`${inter.variable} ${baiJamjuree.variable} font-sans text-zinc-100 bg-zinc-800`}>
+        {children}
+      </body>
     </html>
   )
 }
