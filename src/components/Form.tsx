@@ -315,7 +315,7 @@ export default () => {
 
         <p className="text-zinc-400 w-full max-w-lg text-sm md:text-base">
           É importante que você envie o comprovante de pagamento para o contato 
-          <span className="text-gradient font-bold text-lg underline"> (83) 98729-6826</span>.
+          <span className="text-gradient font-bold text-lg underline"> (83) 99196-5881</span>.
         </p>
       </div>
 
