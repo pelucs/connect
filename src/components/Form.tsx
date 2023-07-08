@@ -56,7 +56,7 @@ export default () => {
     let textCopy = document.querySelector("#copy");
 
     if(textCopy){
-      let formatText = textCopy.innerHTML.replace("(Pedro Lucas)", "");
+      let formatText = textCopy.innerHTML.replace("(Lucas Adriel)", "");
 
       navigator.clipboard.writeText(formatText);
 
@@ -194,7 +194,7 @@ export default () => {
         
           <textarea
             {...register("description")}
-            placeholder="Ex: Pagamento será em 2x"
+            placeholder="Escreva uma mensagem"
             className="w-full h-20 rounded px-4 py-3 outline-none text-sm bg-zinc-800 border 
             border-zinc-700 hover:border-purple-primary focus:border-purple-primary 
             transition-all resize-none"
@@ -221,7 +221,7 @@ export default () => {
 
         <div className="px-5 py-4 bg-zinc-800 border rounded border-zinc-700 flex items-center justify-between gap-3">
           <p id="copy" className="whitespace-nowrap text-ellipsis overflow-hidden">
-            83987296826 (Pedro Lucas)
+            lucasaadriel@gmail.com (Lucas Adriel)
           </p>
 
           <span onClick={copyTransfer}>
