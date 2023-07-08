@@ -7,7 +7,7 @@ import { Users } from 'lucide-react';
 
 export default () => {
   return(
-    <div className="w-full min-h-screen py-16 px-5 md:px-16 flex items-center flex-col justify-between bg-[url(../assets/bg.png)]">
+    <div className="w-full min-h-screen py-16 px-5 md:px-16 flex items-center flex-col justify-between bg-[url(../assets/bg.png)] bg-cover bg-center">
       <Image 
         src={logoConnect} 
         alt="Logo do Connect"
