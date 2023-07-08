@@ -224,7 +224,7 @@ export default () => {
             lucasaadriel@gmail.com (Lucas Adriel)
           </p>
 
-          <span onClick={copyTransfer}>
+          <span onClick={copyTransfer} className="cursor-pointer">
             <Copy className="w-6 h-6 text-zinc-400 hover:text-white transition-colors"/>
           </span>
         </div>
