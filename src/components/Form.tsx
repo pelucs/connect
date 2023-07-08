@@ -1,13 +1,13 @@
 'use client'
 
+import * as RadioGroup from '@radix-ui/react-radio-group';
+
 import { 
   AlertTriangle, 
   Copy, 
   Loader, 
   MoveRight, 
   Phone, 
-  Shirt, 
-  Split, 
   User } 
 from "lucide-react";
 
@@ -119,74 +119,179 @@ export default () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <div className="flex flex-col gap-2">
-            <label htmlFor="" className="uppercase text-xs text-zinc-400 font-bold">Escolha o departamento</label>
-
-            <div className="flex items-center relative">
-              <Split className="w-6 h-6 absolute left-3 text-zinc-500"/>
-
-              <select 
-                defaultValue="default" 
-                className="input"
-                {...register("departament")}
-              >
-                <option disabled value="default">Escolha o departamento</option>
-
-                <option 
-                  value="Welcome"
-                  label="Welcome (Responsável pela organização do culto e recepção)"
-                />
-
-                <option 
-                  value="Creative"
-                  label="Creative (responsável pela captura visual, criação dos layout e controle das redes sociais)"
-                />
-                
-                <option 
-                  value="Produção"
-                  label="Produção (responsável pela criação e montagem do projeto visual)"
-                />
-
-                <option 
-                  value="Theater"
-                  label="Theater (Criação e execução de peças teatrais)"
-                />
-
-                <option 
-                  value="Dance"
-                  label="Dance (Responsável pela criação da dança, seja ela coreografada ou espontânea)"
-                />
-              </select>
-            </div>
-
-            {errors.departament && (
-              <span className="text-xs font-bold uppercase text-purple-primary">
-                {errors.departament.message}
-              </span>
-            )}
-          </div>
+        <div>
+          <h1 className="uppercase text-xs text-zinc-400 font-bold">
+            Escolha o departamento que deseja servir
+          </h1>
           
-          <div className="flex flex-col gap-2">
-            <label htmlFor="" className="uppercase text-xs text-zinc-400 font-bold">Tamanho da camisa</label>
-
-            <div className="flex items-center relative">
-              <Shirt className="w-6 h-6 absolute left-3 text-zinc-500"/>
-
-              <input
-                placeholder="Informe o tamanho da sua camisa"
-                {...register("sizeShirt")}
-                className="input"
+          <div className="mt-4 space-y-4">
+            <div className="flex items-start gap-3">
+              <input 
+                type="radio"
+                id="welcome" 
+                value="welcome"
+                {...register("departament")} 
               />
+
+              <label htmlFor="welcome" className="flex flex-col gap-1">
+                <h1 className="leading-none">
+                  Welcome
+                </h1>
+
+                <span className="text-xs text-zinc-400">
+                  Responsável pela organização do culto e recepção.
+                </span>
+              </label>
             </div>
 
-            {errors.sizeShirt && (
-              <span className="text-xs font-bold uppercase text-purple-primary">
-                {errors.sizeShirt.message}
-              </span>
-            )}
+            <div className="flex items-start gap-3">
+              <input 
+                type="radio"
+                id="creative" 
+                value="creative"
+                {...register("departament")} 
+              />
+
+              <label htmlFor="creative" className="flex flex-col gap-1">
+                <h1 className="leading-none">
+                  Creative
+                </h1>
+
+                <span className="text-xs text-zinc-400">
+                  Responsável pela captura visual, criação de layouts e controle das redes sociais.
+                </span>
+              </label>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <input 
+                type="radio"
+                id="producao" 
+                value="produção"
+                {...register("departament")} 
+              />
+
+              <label htmlFor="producao" className="flex flex-col gap-1">
+                <h1 className="leading-none">
+                  Produção
+                </h1>
+
+                <span className="text-xs text-zinc-400">
+                  Responsável pela criação e montagem do projeto visual.
+                </span>
+              </label>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <input 
+                type="radio"
+                id="theater" 
+                value="theater"
+                {...register("departament")} 
+              />
+
+              <label htmlFor="theater" className="flex flex-col gap-1">
+                <h1 className="leading-none">
+                  Theater
+                </h1>
+
+                <span className="text-xs text-zinc-400">
+                  Criação e execução de peças teatrais.
+                </span>
+              </label>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <input 
+                type="radio"
+                id="dance" 
+                value="dance"
+                {...register("departament")} 
+              />
+
+              <label htmlFor="dance" className="flex flex-col gap-1">
+                <h1 className="leading-none">
+                  Dance
+                </h1>
+
+                <span className="text-xs text-zinc-400">
+                  Responsável pela criação da dança, seja ela coreografada ou espontânea.
+                </span>
+              </label>
+            </div>
           </div>
 
+          {errors.departament && (
+            <span className="text-xs font-bold uppercase text-purple-primary">
+              {errors.departament.message}
+            </span>
+          )}
+        </div>
+
+        <div>
+          <h1 className="uppercase text-xs text-zinc-400 font-bold">
+            Escolha o tamanho da camisa
+          </h1>
+          
+          <div className="mt-4 space-y-4">
+            <div className="flex items-start gap-3">
+              <input 
+                type="radio"
+                id="p" 
+                value="p"
+                {...register("sizeShirt")} 
+              />
+
+              <label htmlFor="p" className="leading-none">
+                P
+              </label>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <input 
+                type="radio"
+                id="m" 
+                value="m"
+                {...register("sizeShirt")} 
+              />
+
+              <label htmlFor="m" className="leading-none">
+                M
+              </label>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <input 
+                type="radio"
+                id="g" 
+                value="g"
+                {...register("sizeShirt")} 
+              />
+
+              <label htmlFor="g" className="leading-none">
+                G
+              </label>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <input 
+                type="radio"
+                id="gg" 
+                value="gg"
+                {...register("sizeShirt")} 
+              />
+
+              <label htmlFor="gg" className="leading-none">
+                GG
+              </label>  
+            </div>
+          </div>
+
+          {errors.sizeShirt && (
+            <span className="text-xs font-bold uppercase text-purple-primary">
+              {errors.sizeShirt.message}
+            </span>
+          )}
         </div>
 
         <div className="flex flex-col gap-2">
