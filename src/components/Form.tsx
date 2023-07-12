@@ -1,7 +1,5 @@
 'use client'
 
-import * as RadioGroup from '@radix-ui/react-radio-group';
-
 import { 
   AlertTriangle, 
   Copy, 
@@ -21,7 +19,7 @@ const schemaForm = z.object({
   contact: z.string().nonempty("*Inform seu contato"),
   departament: z.string().nonempty("*Informe o departamento"),
   sizeShirt: z.string().nonempty("*Informe o tamanho da sua camisa"),
-  description: z.string()
+  isMember: z.string().nonempty("*Informe se é membro ou não")
 });
 
 type SchemaFormData = z.infer<typeof schemaForm>;
@@ -42,7 +40,7 @@ export default () => {
         contact: data.contact,
         departament: data.departament,
         sizeShirt: data.sizeShirt,
-        description: data.description
+        isMember: data.isMember
       }
     })
     .then(() => {
@@ -60,7 +58,7 @@ export default () => {
 
       navigator.clipboard.writeText(formatText);
 
-      alert("Copiado para área de transferência")
+      alert("Copiado para área de transferência");
     }
   }
 
@@ -117,6 +115,46 @@ export default () => {
               </span>
             )}
           </div>
+        </div>
+
+        <div>
+          <h1 className="uppercase text-xs text-zinc-400 font-bold">
+            É membro da ADVEC?
+          </h1>
+          
+          <div className="mt-4 space-y-4">
+            <div className="flex items-start gap-3">
+              <input 
+                type="radio"
+                id="yesMember" 
+                value="Sim"
+                {...register("isMember")} 
+              />
+
+              <label htmlFor="yesMember" className="leading-none">
+                Sim
+              </label>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <input 
+                type="radio"
+                id="noMember" 
+                value="Não"
+                {...register("isMember")} 
+              />
+
+              <label htmlFor="noMember" className="leading-none">
+                Não
+              </label>
+            </div>
+          </div>
+
+          {errors.isMember && (
+            <span className="text-xs font-bold uppercase text-purple-primary">
+              {errors.isMember.message}
+            </span>
+          )}
         </div>
 
         <div>
@@ -293,18 +331,6 @@ export default () => {
             </span>
           )}
         </div>
-
-        <div className="flex flex-col gap-2">
-          <label htmlFor="" className="uppercase text-xs text-zinc-400 font-bold">Alguma observação? (OPCIONAL)</label>
-        
-          <textarea
-            {...register("description")}
-            placeholder="Escreva uma mensagem"
-            className="w-full h-20 rounded px-4 py-3 outline-none text-sm bg-zinc-800 border 
-            border-zinc-700 hover:border-purple-primary focus:border-purple-primary 
-            transition-all resize-none"
-          />
-        </div>
       </div>
 
       <div className="mt-5 px-3 md:px-5 py-2 md:py-4 flex items-start gap-3 md:gap-5 bg-zinc-800 border 
@@ -314,7 +340,12 @@ export default () => {
         </div>
 
         <p className="text-zinc-400 w-full max-w-lg text-sm md:text-base">
-          É importante que você envie o comprovante de pagamento para o contato 
+          Podemos dividir o valor da inscrição em até 2x de R$65,00. Para isso, você deve procurar o departamento <span className="text-gradient font-bold text-lg underline">Store</span>.
+
+          <br/>
+          <br/>
+
+          Caso o seu pagamento seja à vista, logo abaixo disponibilizamos o pix para a transferência. É importante que você envie o comprovante de pagamento para o contato 
           <span className="text-gradient font-bold text-lg underline"> (83) 99196-5881</span>.
         </p>
       </div>

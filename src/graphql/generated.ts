@@ -790,13 +790,13 @@ export type Form = Node & {
   /** User that created this document */
   createdBy?: Maybe<User>;
   departament: Scalars['String']['output'];
-  description?: Maybe<Scalars['String']['output']>;
   /** Get the document in other stages */
   documentInStages: Array<Form>;
   /** List of Form versions */
   history: Array<Version>;
   /** The unique identifier */
   id: Scalars['ID']['output'];
+  isMember: Scalars['String']['output'];
   name: Scalars['String']['output'];
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
@@ -877,7 +877,7 @@ export type FormCreateInput = {
   contact: Scalars['String']['input'];
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   departament: Scalars['String']['input'];
-  description?: InputMaybe<Scalars['String']['input']>;
+  isMember: Scalars['String']['input'];
   name: Scalars['String']['input'];
   sizeShirt: Scalars['String']['input'];
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -970,25 +970,6 @@ export type FormManyWhereInput = {
   departament_not_starts_with?: InputMaybe<Scalars['String']['input']>;
   /** All values starting with the given string. */
   departament_starts_with?: InputMaybe<Scalars['String']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  /** All values containing the given string. */
-  description_contains?: InputMaybe<Scalars['String']['input']>;
-  /** All values ending with the given string. */
-  description_ends_with?: InputMaybe<Scalars['String']['input']>;
-  /** All values that are contained in given list. */
-  description_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  description_not?: InputMaybe<Scalars['String']['input']>;
-  /** All values not containing the given string. */
-  description_not_contains?: InputMaybe<Scalars['String']['input']>;
-  /** All values not ending with the given string */
-  description_not_ends_with?: InputMaybe<Scalars['String']['input']>;
-  /** All values that are not contained in given list. */
-  description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  /** All values not starting with the given string. */
-  description_not_starts_with?: InputMaybe<Scalars['String']['input']>;
-  /** All values starting with the given string. */
-  description_starts_with?: InputMaybe<Scalars['String']['input']>;
   documentInStages_every?: InputMaybe<FormWhereStageInput>;
   documentInStages_none?: InputMaybe<FormWhereStageInput>;
   documentInStages_some?: InputMaybe<FormWhereStageInput>;
@@ -1011,6 +992,25 @@ export type FormManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']['input']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']['input']>;
+  isMember?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  isMember_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  isMember_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  isMember_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  isMember_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  isMember_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  isMember_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  isMember_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  isMember_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  isMember_starts_with?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   /** All values containing the given string. */
   name_contains?: InputMaybe<Scalars['String']['input']>;
@@ -1093,10 +1093,10 @@ export enum FormOrderByInput {
   CreatedAtDesc = 'createdAt_DESC',
   DepartamentAsc = 'departament_ASC',
   DepartamentDesc = 'departament_DESC',
-  DescriptionAsc = 'description_ASC',
-  DescriptionDesc = 'description_DESC',
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC',
+  IsMemberAsc = 'isMember_ASC',
+  IsMemberDesc = 'isMember_DESC',
   NameAsc = 'name_ASC',
   NameDesc = 'name_DESC',
   PublishedAtAsc = 'publishedAt_ASC',
@@ -1110,7 +1110,7 @@ export enum FormOrderByInput {
 export type FormUpdateInput = {
   contact?: InputMaybe<Scalars['String']['input']>;
   departament?: InputMaybe<Scalars['String']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
+  isMember?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   sizeShirt?: InputMaybe<Scalars['String']['input']>;
 };
@@ -1135,7 +1135,7 @@ export type FormUpdateManyInlineInput = {
 export type FormUpdateManyInput = {
   contact?: InputMaybe<Scalars['String']['input']>;
   departament?: InputMaybe<Scalars['String']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
+  isMember?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   sizeShirt?: InputMaybe<Scalars['String']['input']>;
 };
@@ -1253,25 +1253,6 @@ export type FormWhereInput = {
   departament_not_starts_with?: InputMaybe<Scalars['String']['input']>;
   /** All values starting with the given string. */
   departament_starts_with?: InputMaybe<Scalars['String']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  /** All values containing the given string. */
-  description_contains?: InputMaybe<Scalars['String']['input']>;
-  /** All values ending with the given string. */
-  description_ends_with?: InputMaybe<Scalars['String']['input']>;
-  /** All values that are contained in given list. */
-  description_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  description_not?: InputMaybe<Scalars['String']['input']>;
-  /** All values not containing the given string. */
-  description_not_contains?: InputMaybe<Scalars['String']['input']>;
-  /** All values not ending with the given string */
-  description_not_ends_with?: InputMaybe<Scalars['String']['input']>;
-  /** All values that are not contained in given list. */
-  description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  /** All values not starting with the given string. */
-  description_not_starts_with?: InputMaybe<Scalars['String']['input']>;
-  /** All values starting with the given string. */
-  description_starts_with?: InputMaybe<Scalars['String']['input']>;
   documentInStages_every?: InputMaybe<FormWhereStageInput>;
   documentInStages_none?: InputMaybe<FormWhereStageInput>;
   documentInStages_some?: InputMaybe<FormWhereStageInput>;
@@ -1294,6 +1275,25 @@ export type FormWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']['input']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']['input']>;
+  isMember?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  isMember_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  isMember_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  isMember_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  isMember_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  isMember_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  isMember_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  isMember_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  isMember_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  isMember_starts_with?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   /** All values containing the given string. */
   name_contains?: InputMaybe<Scalars['String']['input']>;
@@ -3635,7 +3635,7 @@ export type CreateFormMutationVariables = Exact<{
   contact: Scalars['String']['input'];
   departament: Scalars['String']['input'];
   sizeShirt: Scalars['String']['input'];
-  description: Scalars['String']['input'];
+  isMember: Scalars['String']['input'];
 }>;
 
 
@@ -3643,9 +3643,9 @@ export type CreateFormMutation = { __typename?: 'Mutation', createForm?: { __typ
 
 
 export const CreateFormDocument = gql`
-    mutation CreateForm($name: String!, $contact: String!, $departament: String!, $sizeShirt: String!, $description: String!) {
+    mutation CreateForm($name: String!, $contact: String!, $departament: String!, $sizeShirt: String!, $isMember: String!) {
   createForm(
-    data: {name: $name, contact: $contact, departament: $departament, sizeShirt: $sizeShirt, description: $description}
+    data: {name: $name, contact: $contact, departament: $departament, sizeShirt: $sizeShirt, isMember: $isMember}
   ) {
     id
   }
@@ -3670,7 +3670,7 @@ export type CreateFormMutationFn = Apollo.MutationFunction<CreateFormMutation, C
  *      contact: // value for 'contact'
  *      departament: // value for 'departament'
  *      sizeShirt: // value for 'sizeShirt'
- *      description: // value for 'description'
+ *      isMember: // value for 'isMember'
  *   },
  * });
  */
