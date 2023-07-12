@@ -27,7 +27,7 @@ export default () => {
         </strong>
 
         <p className="text-zinc-300 w-full max-w-lg text-center">
-          Nós vamos construir um legado de fé, esperança e amor para as futuras gerações, e não mediremos
+          Nós vamos construir um legado de fé, esperança e amor para as futuras gerações e não mediremos
           esforços para cumprir esse propósito.
         </p>
 
