@@ -18,8 +18,8 @@ export default () => {
 
         <p className="mt-3 md:mt-5 w-full max-w-lg text-zinc-300 text-center">
           Preencha todos os campos corretamente e esteja consciente das informações que você cadastrou.
-          Exigimos uma taxa de inscrição no valor de <span className="text-gradient text-lg font-bold">R$60,00 </span> 
-          que será designada para compra das camisas de voluntários da conferência.
+          Para validar sua inscrição, é necessário o pagamento da taxa no valor de <span className="text-gradient text-lg font-bold">R$60,00 </span> 
+          que lhe dará direito ao kit voluntário (Camisa, pulseira e brinde).
         </p>
       </div>
 
