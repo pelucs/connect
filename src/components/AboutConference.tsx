@@ -18,9 +18,9 @@ export default () => {
           </strong>
 
           <p className="mt-5 md:mt-10 w-full max-w-lg text-zinc-300">
-            O Connect Conference é realizado pela ADVEC (Assembléia de Deus Vitória em Cristo - Campina Grande) 
-            e é voltado para jovens que desejam provar do amor de Cristo. Você que é jovem está convidado e será
-            um prazer recebe-lo em nossa casa. Serão dois dias de pura adoração e aprendizagem.   
+            A Connect Conference é realizada pela ADVEC (Assembléia de Deus Vitória em Cristo) 
+            e é voltada para jovens que desejam provar do amor de Cristo. Você está convidado e será
+            um prazer recebe-lo em nossa casa.
           </p>
         </div>
 
