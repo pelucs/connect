@@ -12,9 +12,9 @@ export default () => {
       <div className="w-full grid grid-cols-1 md:grid-cols-2">
         <div className="flex flex-col justify-center">
           <strong className="text-3xl md:text-5xl leading-tight">
-            Serão grandes dias de <br/>
+            Serão dias <br/>
 
-            <TextGradient title="louvor e adoração."/>
+            <TextGradient title="extraordinários."/>
           </strong>
 
           <p className="mt-5 md:mt-10 w-full max-w-lg text-zinc-300">
