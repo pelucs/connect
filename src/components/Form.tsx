@@ -19,7 +19,8 @@ const schemaForm = z.object({
   contact: z.string().nonempty("*Inform seu contato"),
   departament: z.string().nonempty("*Informe o departamento"),
   sizeShirt: z.string().nonempty("*Informe o tamanho da sua camisa"),
-  isMember: z.string().nonempty("*Informe se é membro ou não")
+  isMember: z.string().nonempty("*Informe se é membro ou não"),
+  age: z.string().nonempty("*Informe a sua idade")
 });
 
 type SchemaFormData = z.infer<typeof schemaForm>;
@@ -40,7 +41,8 @@ export default () => {
         contact: data.contact,
         departament: data.departament,
         sizeShirt: data.sizeShirt,
-        isMember: data.isMember
+        isMember: data.isMember,
+        age: data.age
       }
     })
     .then(() => {
@@ -116,6 +118,27 @@ export default () => {
             )}
           </div>
         </div>
+
+        <div className="flex flex-col gap-2">
+            <label htmlFor="" className="uppercase text-xs text-zinc-400 font-bold">Sua idade</label>
+
+            <div className="flex items-center relative">
+              <User className="w-6 h-6 absolute left-3 text-zinc-500"/>
+
+              <input
+                placeholder="Informe sua idade"
+                className="input"
+                type="number"
+                {...register("age")}
+              />
+            </div>
+
+            {errors.age && (
+              <span className="text-xs font-bold uppercase text-purple-primary">
+                {errors.age.message}
+              </span>
+            )}
+          </div>
 
         <div>
           <h1 className="uppercase text-xs text-zinc-400 font-bold">

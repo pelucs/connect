@@ -1,6 +1,6 @@
-mutation CreateForm ($name: String!, $contact: String!, $departament: String!, $sizeShirt: String!, $isMember: String!) {
+mutation CreateForm ($name: String!, $contact: String!, $age: String!, $departament: String!, $sizeShirt: String!, $isMember: String!) {
   createForm(
-    data: {name: $name, contact: $contact, departament: $departament, sizeShirt: $sizeShirt, isMember: $isMember}){
+    data: {name: $name, contact: $contact, age: $age, departament: $departament, sizeShirt: $sizeShirt, isMember: $isMember}){
     id
   }
 }

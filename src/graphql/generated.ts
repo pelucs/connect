@@ -784,6 +784,7 @@ export type DocumentVersion = {
 
 export type Form = Node & {
   __typename?: 'Form';
+  age: Scalars['String']['output'];
   contact: Scalars['String']['output'];
   /** The time the document was created */
   createdAt: Scalars['DateTime']['output'];
@@ -874,6 +875,7 @@ export type FormConnection = {
 };
 
 export type FormCreateInput = {
+  age: Scalars['String']['input'];
   contact: Scalars['String']['input'];
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   departament: Scalars['String']['input'];
@@ -916,6 +918,25 @@ export type FormManyWhereInput = {
   OR?: InputMaybe<Array<FormWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']['input']>;
+  age?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  age_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  age_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  age_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  age_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  age_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  age_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  age_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  age_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  age_starts_with?: InputMaybe<Scalars['String']['input']>;
   contact?: InputMaybe<Scalars['String']['input']>;
   /** All values containing the given string. */
   contact_contains?: InputMaybe<Scalars['String']['input']>;
@@ -1087,6 +1108,8 @@ export type FormManyWhereInput = {
 };
 
 export enum FormOrderByInput {
+  AgeAsc = 'age_ASC',
+  AgeDesc = 'age_DESC',
   ContactAsc = 'contact_ASC',
   ContactDesc = 'contact_DESC',
   CreatedAtAsc = 'createdAt_ASC',
@@ -1108,6 +1131,7 @@ export enum FormOrderByInput {
 }
 
 export type FormUpdateInput = {
+  age?: InputMaybe<Scalars['String']['input']>;
   contact?: InputMaybe<Scalars['String']['input']>;
   departament?: InputMaybe<Scalars['String']['input']>;
   isMember?: InputMaybe<Scalars['String']['input']>;
@@ -1133,6 +1157,7 @@ export type FormUpdateManyInlineInput = {
 };
 
 export type FormUpdateManyInput = {
+  age?: InputMaybe<Scalars['String']['input']>;
   contact?: InputMaybe<Scalars['String']['input']>;
   departament?: InputMaybe<Scalars['String']['input']>;
   isMember?: InputMaybe<Scalars['String']['input']>;
@@ -1199,6 +1224,25 @@ export type FormWhereInput = {
   OR?: InputMaybe<Array<FormWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']['input']>;
+  age?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  age_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  age_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  age_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  age_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  age_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  age_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  age_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  age_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  age_starts_with?: InputMaybe<Scalars['String']['input']>;
   contact?: InputMaybe<Scalars['String']['input']>;
   /** All values containing the given string. */
   contact_contains?: InputMaybe<Scalars['String']['input']>;
@@ -3633,6 +3677,7 @@ export enum _SystemDateTimeFieldVariation {
 export type CreateFormMutationVariables = Exact<{
   name: Scalars['String']['input'];
   contact: Scalars['String']['input'];
+  age: Scalars['String']['input'];
   departament: Scalars['String']['input'];
   sizeShirt: Scalars['String']['input'];
   isMember: Scalars['String']['input'];
@@ -3643,9 +3688,9 @@ export type CreateFormMutation = { __typename?: 'Mutation', createForm?: { __typ
 
 
 export const CreateFormDocument = gql`
-    mutation CreateForm($name: String!, $contact: String!, $departament: String!, $sizeShirt: String!, $isMember: String!) {
+    mutation CreateForm($name: String!, $contact: String!, $age: String!, $departament: String!, $sizeShirt: String!, $isMember: String!) {
   createForm(
-    data: {name: $name, contact: $contact, departament: $departament, sizeShirt: $sizeShirt, isMember: $isMember}
+    data: {name: $name, contact: $contact, age: $age, departament: $departament, sizeShirt: $sizeShirt, isMember: $isMember}
   ) {
     id
   }
@@ -3668,6 +3713,7 @@ export type CreateFormMutationFn = Apollo.MutationFunction<CreateFormMutation, C
  *   variables: {
  *      name: // value for 'name'
  *      contact: // value for 'contact'
+ *      age: // value for 'age'
  *      departament: // value for 'departament'
  *      sizeShirt: // value for 'sizeShirt'
  *      isMember: // value for 'isMember'
