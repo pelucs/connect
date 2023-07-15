@@ -363,7 +363,7 @@ export default () => {
         </div>
 
         <p className="text-zinc-400 w-full max-w-lg text-sm md:text-base">
-          Podemos dividir o valor da inscrição em até <span className="text-gradient font-bold text-lg underline">2x de R$65,00</span>. Para isso, você deve procurar o departamento <span className="text-gradient font-bold text-lg underline">Store</span>.
+          Podemos dividir o valor da inscrição em até <span className="text-gradient font-bold text-lg underline">2x de R$32,50</span>. Para isso, você deve procurar o departamento <span className="text-gradient font-bold text-lg underline">Store</span>.
 
           <br/>
           <br/>
