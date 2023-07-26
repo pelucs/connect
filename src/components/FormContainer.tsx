@@ -2,9 +2,12 @@
 
 import Form from "./Form";
 import TextGradient from "./TextGradient";
+import Image from "next/image";
 
 import { ApolloProvider } from '@apollo/client'
 import { client } from "@/lib/apolllo";
+
+import kitVolunteer from '../assets/kit-volunteer.png';
 
 export default () => {
   return(
@@ -22,6 +25,12 @@ export default () => {
           que lhe dará direito ao kit voluntário (Camisa, pulseira e brinde).
         </p>
       </div>
+
+      <Image 
+        src={kitVolunteer}
+        alt="Kit de voluntários Connect"
+        className="mt-10 w-full max-w-2xl rounded-md"
+      />
 
       <ApolloProvider client={client}>
         <Form/>

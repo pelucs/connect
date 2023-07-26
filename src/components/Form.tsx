@@ -65,7 +65,7 @@ export default () => {
   }
 
   return(
-    <form onSubmit={handleSubmit(sendForm)} className="mt-16 w-full max-w-2xl px-6 py-5 rounded-md bg-zinc-900 backdrop-blur-md">
+    <form onSubmit={handleSubmit(sendForm)} className="mt-10 w-full max-w-2xl px-6 py-5 rounded-md bg-zinc-900 backdrop-blur-md">
       <div>
         <strong className="text-2xl leading-relaxed">
           Formulário de inscrição
